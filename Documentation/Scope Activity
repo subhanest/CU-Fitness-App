@@ -1,0 +1,198 @@
+COEN 6311 SOFTWARE ENGINEERING-WINTER 2025
+
+SCOPE ACTIVITY
+
+1. Purpose
+
+We are creating this solution to help the Concordia University community improve their health and wellness by offering a personalized, accessible fitness platform within the SoftGrid app, enabling students, faculty, and staff to achieve their fitness goals with ease. 
+
+Stakeholders & their goals:
+
+    • Students: Need an easy-to-use platform to fit fitness into their busy schedules. Goal: Achieve personal health and fitness goals.
+    • Faculty & Staff: Need a flexible wellness tool for a balanced work-life routine. Goal: Maintain health and reduce stress.
+    • University Administration: Need a tool that supports wellness initiatives and engages the campus community. Goal: Promote overall health and strengthen campus life.
+    • Developers & Designers: Need to create a seamless, functional app integrated with SoftGrid. Goal: Deliver a user-friendly, reliable platform.
+
+Client needs & the value we bring for them:
+
+    • Client Need: Concordia University needs a solution to promote health, wellness, and engagement among students, faculty, and staff.
+    • Value We Bring: CUFitness provides a personalized, accessible, and integrated wellness platform that helps the university community achieve their health goals while fostering a sense of connection and support.
+
+Main deliverable at the end:
+
+The CUFitness application will fully integrate within SoftGrid, providing personalized fitness plans, nutrition tracking, and community-building features for Concordia’s students, faculty, and staff.
+
+Outcome:
+
+The outcome will be a healthier, more engaged Concordia University community with easy access to fitness and wellness resources, fostering improved physical and mental well-being. We believe, it will be exceeding stakeholders' expectations and long-term value through a reliable, scalable, and maintainable product.
+
+
+2. Usage
+
+Working with CUFitness
+Users will interact with CUFitness by logging into the app, entering their goals, and using the personalized features such as workout plans, meal tracking, wellness resources, and community-driven challenges. The app’s design will allow for smooth navigation between different tools, fostering engagement and consistency in maintaining healthy habits.
+
+Epics and User Stories for CUFitness
+
+Epic 1: User Onboarding and Account Setup
+    • User Story 1.1: As a new user, I want to create an account and set up my profile, so I can begin tracking my fitness and nutrition goals.
+    • User Story 1.2: As a new user, I want to input my fitness level, goals, and preferences (e.g., dietary restrictions), so the app can recommend personalized workout plans and meal ideas.
+
+Epic 2: Personalized Workout Plans
+    • User Story 2.1: As a user, I want to receive a daily/weekly workout plan tailored to my fitness level and goals, so I can stay motivated and track progress.
+    • User Story 2.2: As a user, I want the app to adjust my workout plan based on my performance (e.g., if I miss a workout or hit a milestone), so I can stay on track toward my goals.
+
+Epic 3: Nutrition and Meal Tracking
+    • User Story 3.1: As a user, I want to log my meals and track calories, so I can monitor my nutrition and stay on track with my diet goals.
+    • User Story 3.2: As a user, I want to get meal recommendations based on my dietary preferences and fitness goals, so I can eat in a way that supports my health.
+    • User Story 3.3: As a user, I want the option to scan food barcodes, so I can quickly log nutritional information for packaged foods.
+
+Epic 4: Social and Community Engagement
+    • User Story 4.1: As a user, I want to join fitness challenges and compete with friends or the wider community, so I stay motivated and accountable.
+    • User Story 4.2: As a user, I want to share my fitness progress (e.g., steps, workouts, achievements) with my social group, so I can get support and encouragement.
+    • User Story 4.3: As a user, I want to create or join campus fitness groups based on shared goals (e.g., running group, yoga group), so I can connect with like-minded individuals.
+
+Epic 5: Wellness Resources and Mental Health
+    • User Story 5.1: As a user, I want access to guided meditation sessions and stress-relief exercises, so I can improve my mental well-being.
+    • User Story 5.2: As a user, I want to receive daily wellness tips or affirmations, so I can stay mentally focused and motivated throughout my day.
+
+Epic 6: Progress Tracking and Insights
+    • User Story 6.1: As a user, I want to view a dashboard that shows my progress (e.g., workouts completed, calories burned, meals logged), so I can track my improvements over time.
+    • User Story 6.2: As a user, I want to set fitness goals (e.g., running a 5K, losing weight) and get progress reports, so I can stay motivated to achieve them.
+
+Epic 7: Notifications and Reminders
+    • User Story 7.1: As a user, I want to receive reminders to complete my workouts and log meals, so I stay on track with my goals.
+    • User Story 7.2: As a user, I want to receive notifications about community events or new challenges, so I can participate and stay engaged.
+
+Epic 8: Integration with SoftGrid
+    • User Story 8.1: As a user, I want to log in to CUFitness using my existing SoftGrid credentials, so I don’t need to create a new account.
+    • User Story 8.2: As a user, I want to integrate CUFitness data with my SoftGrid profile (e.g., fitness achievements, health data), so I can view everything in one place.
+
+Iteration and Refinement
+
+    • In the first sprint, we may focus on the Onboarding and Account Setup Epic (User Story 1.1 and 1.2), as well as basic Personalized Workout Plans (User Story 2.1).
+    • In the second sprint, we can tackle the Nutrition and Meal Tracking Epic and continue developing Social and Community Engagement (User Story 4.1).
+    • By subsequent sprints, we’ll refine the Wellness Resources and Progress Tracking features.
+
+This structure allows us to release a working version of CUFitness early on, providing users with essential features like personalized workouts and meal tracking while continuously adding more complex features like social engagement and wellness resources.
+
+3. Quality Requirements:
+
+1. Security Stories
+    • 1.1: Implement user authentication to secure accounts and prevent unauthorized access.
+    • 1.2: Encrypt sensitive user data to protect privacy and comply with regulations.
+    • 1.3: Use HTTPS to secure data exchanges between the app and server.
+
+
+2. Performance Stories
+    • 2.1: Optimize load time by reducing external dependencies and minimizing data fetches.
+    • 2.2: Implement caching to improve performance by storing frequently used data locally.
+    • 2.3: Optimize database queries to ensure fast data retrieval.
+
+3. Scalability Stories
+    • 3.1: Design app architecture to handle growth in users without performance drops.
+    • 3.2: Implement cloud storage to manage increased data needs.
+    • 3.3: Set up auto-scaling to handle peak traffic loads.
+
+4. Reliability & Availability Stories
+    • 4.1: Set up monitoring and alerts to detect and respond to system issues.
+    • 4.2: Implement data backup to ensure user data can be restored if lost.
+    • 4.3: Design failover strategies to maintain service during outages.
+
+5. Technical Debt Stories
+    • 5.1: Refactor authentication code to improve maintainability and reduce complexity.
+    • 5.2: Clean up unused code to enhance performance and security.
+    • 5.3: Update libraries to ensure compatibility and fix vulnerabilities.
+
+6. Compatibility Stories
+    • 6.1: Ensure cross-platform compatibility to work on both iOS and Android.
+    • 6.2: Test responsiveness to ensure UI works across different screen sizes.
+
+7. Maintenance & Updates Stories
+    • 7.1: Set up CI/CD pipeline to automate testing and deployment.
+    • 7.2: Implement automated tests to reduce bugs and ensure feature stability.
+
+4. Initial Product Backlog
+
+Main epics and user stories:
+
+Epic 1: User Onboarding and Account Setup
+    • User Story 1.1: Create an account and set up my profile.
+    • User Story 1.2: Input fitness level, goals, and preferences for personalized recommendations.
+
+Epic 2: Personalized Workout Plans
+    • User Story 2.1: Receive a customized workout plan based on my fitness level and goals.
+    • User Story 2.2: Adjust my workout plan if I miss a session or hit a milestone.
+Epic 3: Nutrition and Meal Tracking
+    • User Story 3.1: Log meals and track calories.
+    • User Story 3.2: Get meal recommendations based on my dietary preferences and goals.
+
+Epic 4: Social and Community Engagement
+    • User Story 4.1: Join fitness challenges and compete with others.
+    • User Story 4.2: Share fitness progress with friends and social groups.
+
+Epic 5: Progress Tracking and Insights
+    • User Story 5.1: Track progress through a dashboard.
+    • User Story 5.2: Set fitness goals and get progress reports.
+
+Epic 6: Wellness Resources
+    • User Story 6.1: Access wellness resources (e.g., meditation, stress-relief exercises).
+    • User Story 6.2: Receive daily wellness tips or motivational content.
+
+Epic 7: Notifications and Reminders
+    • User Story 7.1: Receive reminders for workouts and meal logging.
+    • User Story 7.2: Get notifications about community challenges and events.
+
+Epic 8: Integration with SoftGrid
+    • User Story 8.1: Log in with SoftGrid credentials.
+    • User Story 8.2: View fitness achievements within SoftGrid.
+
+Technical Stories in the Backlog
+
+1. Security Stories
+    • 1.1: Implement user authentication to secure user accounts and prevent unauthorized access.
+    • 1.2: Encrypt sensitive user data (e.g., fitness progress, personal information) to protect privacy and comply with data protection regulations.
+    • 1.3: Use HTTPS to ensure encrypted communication between the app and the server, preventing data interception.
+
+2. Performance Stories
+    • 2.1: Optimize app load time by reducing the number of external dependencies and minimizing initial data fetches.
+    • 2.2: Implement local data caching to improve performance by storing frequently accessed data and reducing server requests.
+    • 2.3: Optimize database queries to ensure fast data retrieval, even with large user datasets (e.g., meal logs, workout history).
+
+3. Scalability Stories
+    • 3.1: Design app architecture to handle increasing users and data without performance degradation.
+    • 3.2: Implement cloud storage to scale data management as user-generated content grows (e.g., workout videos, progress photos).
+    • 3.3: Set up auto-scaling infrastructure to handle traffic spikes and ensure stability during high user activity.
+
+4. Reliability & Availability Stories
+    • 4.1: Set up automated monitoring and alerts to detect system failures or performance issues and respond quickly.
+    • 4.2: Implement a data backup strategy to ensure regular backups and data recovery in case of failures.
+    • 4.3: Design a failover system to ensure app availability even during server outages, reducing downtime.
+
+5. Technical Debt Stories
+    • 5.1: Refactor the user authentication module to improve code readability, maintainability, and reduce complexity.
+    • 5.2: Clean up and remove unused code to enhance app performance and reduce potential security vulnerabilities.
+    • 5.3: Update outdated libraries and dependencies to ensure compatibility with newer technologies and reduce security risks.
+
+6. Compatibility Stories
+    • 6.1: Ensure compatibility to make sure CUFitness works smoothly on both iOS and Android devices.
+    • 6.2: Test the app on various screen sizes and resolutions to ensure a responsive design across all devices.
+
+7. Maintenance & Updates Stories
+    • 7.1: Implement a CI/CD pipeline to automate testing and deployment, ensuring fast, reliable updates.
+    • 7.2: Set up automated unit tests to ensure feature stability and prevent bugs from being introduced during updates.
+
+
+5. User Experience:
+
+Mockup Inspiration:
+
+    • SoftGrid App Style: The SoftGrid app is known for clean, simple layouts with effective use of cards, icons, and intuitive navigation. You can design CUFitness with a similar approach, using large interactive cards to represent workouts, meals, and challenges. Here are some sample those we can follow,
+
+
+
+
+
+
+
+Design Copyright: moqups, freepik

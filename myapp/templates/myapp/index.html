@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUFitness | Your Campus Fitness & Nutrition Companion</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'myapp/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'myapp/logo.png' %}" alt="CUFitness Logo">
+                <span>CUFitness</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="cta">
+                <a href="#signup" class="btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Concordia to Achieve Fitness Goals</h1>
+                <p>Your personalized fitness and nutrition platform designed for students, faculty, and staff.</p>
+                <a href="#signup" class="btn-secondary">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'myapp/h1_hero.png' %}" alt="Fitness Illustration">
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About CUFitness</h2>
+            <p>CUFitness is a web-based platform designed exclusively for the Concordia University community. We understand the unique challenges students, faculty, and staff face when trying to maintain a healthy lifestyle. Our mission is to provide innovative tools and resources to help you achieve your fitness and nutrition goals.</p>
+        </div>
+    </section>
+
+   
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 CUFitness. All rights reserved.</p>
+            
+        </div>
+    </footer>
+</body>
+</html>

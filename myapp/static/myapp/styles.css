@@ -151,8 +151,7 @@ body {
 /* About Section */
 .about {
   padding: 80px 0;
-  /* background: #ecf0f1; */
-  background: #fff;
+  background: #ecf0f1;
 }
 
 .about h2 {

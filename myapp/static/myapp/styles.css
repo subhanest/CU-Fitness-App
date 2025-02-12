@@ -38,6 +38,12 @@ body {
   margin-right: 10px;
 }
 
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
 .navbar ul {
   list-style: none;
   display: flex;
@@ -56,13 +62,42 @@ body {
   text-decoration: underline;
 }
 
-.cta .btn-primary {
-  background: #e74c3c;
+.cta {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  height: 100%;
+}
+
+.cta .vl {
+  display: flex;
+  border-left: 2px solid #e74c3c;
+  height: 40px;
+}
+
+.cta .btn-login {
+  background: #e73c3c9e;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
+  margin: 0px;
+  padding: 8px 20px;
+  border-radius: 8px 0px 0px 8px;
   text-decoration: none;
   font-weight: 600;
+}
+
+.cta .btn-register {
+  background: #e73c3c9e;
+  color: #fff;
+  margin: 0px;
+  padding: 8px 20px;
+  border-radius: 0px 8px 8px 0px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta .btn-login:hover,
+.cta .btn-register:hover {
+  background: #e74c3c;
 }
 
 /* Hero Section */
@@ -90,12 +125,20 @@ body {
   margin-bottom: 30px;
 }
 
-.hero-content .btn-secondary {
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 8px;
   background: #3498db;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
+}
+
+.bg-white {
+  background-color: white !important;
 }
 
 .hero-image {
@@ -148,19 +191,19 @@ body {
   color: #666;
 }
 
-/* About Section */
-.about {
+/* Pages Sections (Explore, Fitness, Nutrition , Settings) */
+.page-intro {
   padding: 80px 0;
   background: #ecf0f1;
 }
 
-.about h2 {
+.page-intro h2 {
   text-align: center;
   font-size: 36px;
   margin-bottom: 30px;
 }
 
-.about p {
+.page-intro p {
   font-size: 18px;
   line-height: 1.6;
   text-align: center;
@@ -169,7 +212,7 @@ body {
 /* Contact Section */
 .contact {
   padding: 80px 0;
-  background: #fff;
+  background: #ecf0f1;
 }
 
 .contact h2 {

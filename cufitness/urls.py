@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include('myapp.urls')),
     path('explore/', views.explore, name='explore'),
     path('nutrition/', include('meals.urls')),
-    
+     path('fitness/', include('exercise.urls')),
 
    
 ]

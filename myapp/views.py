@@ -12,8 +12,5 @@ def explore(request):
 def fitness(request):
     return render(request, 'myApp/fitness.html')  # Fitness Page
 
-def nutrition(request):
-    return render(request, 'myApp/nutrition.html')# Nutrition Page
-
 def settings(request):
     return render(request, 'myApp/settings.html') # Settings Page

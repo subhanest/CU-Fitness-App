@@ -7,7 +7,7 @@ def home(request):
     return render(request, 'myapp/index.html', {'timestamp': now().timestamp()})
 
 def explore(request):
-    return render(request, 'myApp/explore.html')  # Explore Page
+    return render(request, 'myApp/ER.html')  # Explore Page
 
 def fitness(request):
     return render(request, 'myApp/fitness.html')  # Fitness Page

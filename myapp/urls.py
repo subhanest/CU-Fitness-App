@@ -9,4 +9,6 @@ urlpatterns = [
     path('fitness/', views.fitness, name='fitness'),  # Fitness Page
     path('nutrition/', views.nutrition, name='nutrition'),  # Nutrition Page
     path('privacy-settings/', views.settings, name='settings'),  # Settings Page
+    
 ]
+

@@ -11,3 +11,9 @@ def explore(request):
 
 def settings(request):
     return render(request, 'myApp/settings.html') # Settings Page
+    
+def signup_view(request):
+    return render(request, 'myapp/sign__up.html')  # Sign up Page
+
+def login_view(request):
+    return render(request, 'myApp/log__in.html') # Login Page

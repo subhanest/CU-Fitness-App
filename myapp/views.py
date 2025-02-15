@@ -9,8 +9,5 @@ def home(request):
 def explore(request):
     return render(request, 'myApp/ER.html')  # Explore Page
 
-def fitness(request):
-    return render(request, 'myApp/fitness.html')  # Fitness Page
-
 def settings(request):
     return render(request, 'myApp/settings.html') # Settings Page

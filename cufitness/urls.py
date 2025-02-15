@@ -22,4 +22,3 @@ urlpatterns = [
     path('', include('myapp.urls')),
     path('nutrition/', include('meals.urls')),
 ]
-]

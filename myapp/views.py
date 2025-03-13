@@ -7,13 +7,13 @@ def home(request):
     return render(request, 'myapp/index.html', {'timestamp': now().timestamp()})
 
 def explore(request):
-    return render(request, 'myApp/explore.html')  # Explore Page
-
-def fitness(request):
-    return render(request, 'myApp/fitness.html')  # Fitness Page
-
-def nutrition(request):
-    return render(request, 'myApp/nutrition.html')# Nutrition Page
+    return render(request, 'myApp/ER.html')  # Explore Page
 
 def settings(request):
     return render(request, 'myApp/settings.html') # Settings Page
+    
+def signup_view(request):
+    return render(request, 'myapp/sign__up.html')  # Sign up Page
+
+def login_view(request):
+    return render(request, 'myApp/log__in.html') # Login Page

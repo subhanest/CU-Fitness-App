@@ -1,0 +1,175 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalized Fitness - CUFitness</title>
+    <!-- Corrected CSS Link -->
+    <link rel="stylesheet" href="{% static 'exercise/styles.css' %}">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#nutrition">Nutrition</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container">
+        <h1>CUFitness: Tailored Fitness & Nutrition for You</h1>
+        <p>
+          Empowering Concordia University students, faculty, and staff to
+          achieve their health goals with personalized tools.
+        </p>
+        <a href="#features" class="btn-primary">Learn More</a>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Why Choose Personalized Fitness?</h2>
+        <div class="feature-grid">
+          <div class="feature-item card">
+            <h3>Tailored Workout Plans</h3>
+            <p>
+              Custom fitness plans designed to fit your schedule, preferences,
+              and goals.
+            </p>
+          </div>
+          <div class="feature-item card">
+            <h3>Personalized Diet Plans</h3>
+            <p>
+              Meal recommendations tailored to dietary restrictions, budgets,
+              and campus life.
+            </p>
+          </div>
+          <div class="feature-item card">
+            <h3>Progress Tracking</h3>
+            <p>
+              Visualize your fitness journey with detailed analytics and
+              progress charts.
+            </p>
+          </div>
+          <div class="feature-item card">
+            <h3>Community Support</h3>
+            <p>
+              Connect with fellow Concordians to stay motivated and inspired.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moon Colony Diet Plan Feature -->
+    <section class="moon-diet">
+      <div class="container">
+        <h2>Even Beyond Earth!</h2>
+        <p>
+          We’re innovating for the future with tailored diet plans for moon
+          colonies. Stay ahead of the curve with cutting-edge nutrition science.
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-item">
+            <p>
+              "I'm tired of generic diet plans. This app finally considers my
+              busy schedule and food preferences!"
+            </p>
+            <span>- Participant 1</span>
+          </div>
+          <div class="testimonial-item">
+            <p>
+              "Detailed analytics on my workouts and nutrition help me fine-tune
+              my training."
+            </p>
+            <span>- Participant 12</span>
+          </div>
+          <div class="testimonial-item">
+            <p>
+              "As someone with gluten intolerance, I love the tailored recipe
+              recommendations."
+            </p>
+            <span>- Participant 7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <h3>How do I get started?</h3>
+          <p>Simply sign up and fill in your fitness and nutrition preferences to receive a personalized plan.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is the platform free to use?</h3>
+          <p>Yes! CUFitness is free for all Concordia University students, faculty, and staff.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I track my progress over time?</h3>
+          <p>Absolutely! Our analytics tools help you monitor your fitness and dietary progress.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Who can I contact for support?</h3>
+          <p>You can reach out to our support team via email or our in-app support chat.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Chat Bar -->
+    <div class="chat-bar">
+      <button class="chat-btn" onclick="toggleChat()">💬 Chat Support</button>
+      <div class="chat-box" id="chatBox">
+        <div class="chat-header">Support Chat</div>
+        <div class="chat-body">
+          <p>Welcome to support! How can we help you?</p>
+        </div>
+        <input type="text" class="chat-input" placeholder="Type a message..." />
+      </div>
+    </div>
+
+    <script>
+      function toggleChat() {
+        var chatBox = document.getElementById("chatBox");
+        chatBox.style.display = chatBox.style.display === "none" || chatBox.style.display === "" ? "block" : "none";
+      }
+    </script>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Start Your Fitness Journey Today</h2>
+        <p>
+          Join thousands of Concordians who are achieving their health goals
+          with CUFitness.
+        </p>
+        <a href="#" class="btn-primary">Sign Up Now</a>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Personalized Fitness | Designed for Concordia University
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

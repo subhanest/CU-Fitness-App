@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.section {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#workout-list, #nutrition-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chatbox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    height: 200px;
+    overflow-y: auto;
+}

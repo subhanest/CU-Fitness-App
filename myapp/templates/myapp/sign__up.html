@@ -386,10 +386,10 @@ body {
                 return response.json();
             })
             .then(data => {
-                console.log('Success:', data);
-                alert('Sign up successful!');
-                window.location.href = "/log__in/"; 
-            })
+              console.log('Success:', data);
+              alert('Sign up successful!');
+              window.location.href = data.next || "/questionnaire/";
+          })
             .catch((error) => {
                 console.error('Error:', error);
                 alert('Sign up failed. Please try again.');

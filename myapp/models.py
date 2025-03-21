@@ -1,15 +1,15 @@
-# from django.db import models
+from django.db import models
 
 
-# class User(models.Model):
-#     name = models.CharField(max_length=255) # username
-#     email = models.EmailField(unique=True) # email
-#     phone = models.CharField(max_length=15, blank=True, null=True) # phone number (optional)
-#     age = models.PositiveIntegerField(blank=True, null=True) # age of user (optional)
-#     gender = models.CharField(max_length=10, blank=True, null=True) # gender of user (optional)
+class User(models.Model):
+    name = models.CharField(max_length=255) # username
+    email = models.EmailField(unique=True) # email
+    phone = models.CharField(max_length=15, blank=True, null=True) # phone number (optional)
+    age = models.PositiveIntegerField(blank=True, null=True) # age of user (optional)
+    gender = models.CharField(max_length=10, blank=True, null=True) # gender of user (optional)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
     
 
 from django.db import models
@@ -82,4 +82,25 @@ class UserSession(models.Model):
     
     class Meta:
         verbose_name = "User Session"
-        verbose_name_plural = "User Sessions"
+        verbose_name_plural = "User Sessions"    
+
+
+class UserQuestionnaire(models.Model):
+    """Model to store user responses to the fitness questionnaire."""
+    
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='questionnaire')
+    fitness_goals = models.CharField(max_length=255, blank=True)
+    body_type = models.CharField(max_length=255, blank=True)
+    daily_caloric_need = models.IntegerField(null=True, blank=True)
+    workout_frequency = models.CharField(max_length=255, blank=True)
+    macronutrient_ratio = models.CharField(max_length=255, blank=True)
+    dietary_restrictions = models.CharField(max_length=255, blank=True)
+    sleep_hours = models.IntegerField(null=True, blank=True)
+    work_schedule = models.CharField(max_length=255, blank=True)
+    supplements = models.CharField(max_length=255, blank=True)
+    water_intake = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Questionnaire for {self.user.username}"

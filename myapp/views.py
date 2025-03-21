@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 import json
 from .models import CustomUser
-from .models import CustomUser, UserQuestionnaire
 
 # Create your views here.
 def home(request):
@@ -62,11 +61,7 @@ def signup_view(request):
             # Log the user in
             login(request, user)
             
-            # Return success with redirection to questionnaire
-            return JsonResponse({
-                'message': 'Sign up successful',
-                'next': '/questionnaire/'
-            })
+            return JsonResponse({'message': 'Sign up successful'})
         except Exception as e:
             return JsonResponse({'message': str(e)}, status=400)
 
@@ -116,46 +111,3 @@ def chatbot_view(request):
                 'message': str(e),
                 'status': 'error'
             }, status=500)
-
-
-
-def questionnaire_view(request):
-    """Render the questionnaire page."""
-    # Check if user is authenticated, otherwise redirect to signup
-    if not request.user.is_authenticated:
-        return redirect('sign__up')
-    
-    return render(request, 'myapp/Question_list.html')
-
-@csrf_exempt
-def questionnaire_api(request):
-    """API endpoint to handle questionnaire submissions."""
-    if not request.user.is_authenticated:
-        return JsonResponse({'message': 'Authentication required'}, status=401)
-    
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            
-            # Create or update questionnaire for user
-            questionnaire, created = UserQuestionnaire.objects.get_or_create(user=request.user)
-            
-            # Update fields
-            questionnaire.fitness_goals = data.get('fitness_goals', '')
-            questionnaire.body_type = data.get('body_type', '')
-            questionnaire.daily_caloric_need = data.get('daily_caloric_need') or None
-            questionnaire.workout_frequency = data.get('workout_frequency', '')
-            questionnaire.macronutrient_ratio = data.get('macronutrient_ratio', '')
-            questionnaire.dietary_restrictions = data.get('dietary_restrictions', '')
-            questionnaire.sleep_hours = data.get('sleep_hours') or None
-            questionnaire.work_schedule = data.get('work_schedule', '')
-            questionnaire.supplements = data.get('supplements', '')
-            questionnaire.water_intake = data.get('water_intake', '')
-            
-            questionnaire.save()
-            
-            return JsonResponse({'message': 'Questionnaire saved successfully'})
-        except Exception as e:
-            return JsonResponse({'message': str(e)}, status=400)
-    
-    return JsonResponse({'message': 'Method not allowed'}, status=405)

@@ -173,10 +173,12 @@ body {
   background: #ecf0f1;
   padding: 100px 0;
 }
+
 .hero .container {
   display: flex;
   gap: 50px;
 }
+
 .hero-content {
   flex: 1;
 }

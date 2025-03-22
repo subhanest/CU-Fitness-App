@@ -1,15 +1,19 @@
-from django.shortcuts import render  # type: ignore
-from django.utils.timezone import now  # type: ignore
-from .ai_service import GroqAIService
-from django.shortcuts import render, redirect
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login, logout
 import json
-from .models import CustomUser
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.shortcuts import render  # type: ignore
+from django.shortcuts import redirect
+from django.utils.timezone import now  # type: ignore
+from django.views.decorators.csrf import csrf_exempt
+
+from .ai_service import GroqAIService
 from .models import CustomUser, UserQuestionnaire
 
+
 # Create your views here.
+@csrf_exempt
 def home(request):
     return render(request, 'myapp/index.html', {'timestamp': now().timestamp()})
 
@@ -28,11 +32,39 @@ def login_view(request):
 def chatbot_view(request):
     return JsonResponse({"message": "Hello! How can I help you?"})
 
+@login_required
+def edit_profile(request):
+    user = request.user
+    questionnaire = user.questionnaire
+
+    if request.method == 'POST':
+        # Update User model
+        user.name = request.POST.get('name')
+        user.email = request.POST.get('email')
+        user.phone = request.POST.get('phone')
+        user.age = request.POST.get('age')
+        user.gender = request.POST.get('gender')
+        user.save()
+
+        # Update UserQuestionnaire model
+        questionnaire.fitness_goals = request.POST.get('fitness_goals')
+        questionnaire.body_type = request.POST.get('body_type')
+        questionnaire.daily_caloric_need = request.POST.get('daily_caloric_need')
+        questionnaire.workout_frequency = request.POST.get('workout_frequency')
+        questionnaire.macronutrient_ratio = request.POST.get('macronutrient_ratio')
+        questionnaire.dietary_restrictions = request.POST.get('dietary_restrictions')
+        questionnaire.sleep_hours = request.POST.get('sleep_hours')
+        questionnaire.work_schedule = request.POST.get('work_schedule')
+        questionnaire.supplements = request.POST.get('supplements')
+        questionnaire.water_intake = request.POST.get('water_intake')
+        questionnaire.save()
+
+        return redirect('home')  # Redirect to the profile page after saving
+    return render(request, 'myapp/edit_profile.html') # Edit Profile Page
+
 def user_logout(request):
     logout(request)  # Logs out the user
     return redirect('/log__in')  # Redirect to the login page (or any other page)
-
-# -------------------------------------------------------------------------------- #
 
 @csrf_exempt
 def signup_view(request):
@@ -104,6 +136,7 @@ def chatbot_view(request):
         try:
             data = json.loads(request.body)
             user_message = data.get('message', '')
+            print(user_message)
             
             ai_service = GroqAIService()
             response = ai_service.generate_response(user_message)

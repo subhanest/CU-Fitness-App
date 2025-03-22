@@ -7,7 +7,6 @@
     <title>CU_Fitness</title>
     <link rel="stylesheet" type="text/css" href="{% static 'exercise/styles.css' %}">
 
-    <link rel="icon" href="{% static 'exercise/images/favicon.ico' %}" type="image/x-icon">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -17,13 +16,15 @@
 
     <header>
         <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-          <div class="logo">
-            <a href="/">
-                <img src="{% static 'exercise/images/logo.png' %}" alt="CU_Fitness Logo">
-              </a>
+
+
+            <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <a href="/">
+                    <img src="{% static 'exercise/images/favicon.ico' %}" alt="CU_Fitness Logo" width="40" height="40">
+                </a>
+                <span style="font-size: 24px; font-weight: bold; color: white;">CU_Fitness</span>
+              </div>
               
-            <span style="font-size: 24px; font-weight: bold; color: white;">CU_Fitness</span>
-          </div>
           <nav>
             <a href="#">Home</a>
             <a href="#">Profile</a>

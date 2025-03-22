@@ -28,8 +28,11 @@ def login_view(request):
 def chatbot_view(request):
     return JsonResponse({"message": "Hello! How can I help you?"})
 
+def user_logout(request):
+    logout(request)  # Logs out the user
+    return redirect('/log__in')  # Redirect to the login page (or any other page)
 
-
+# -------------------------------------------------------------------------------- #
 
 @csrf_exempt
 def signup_view(request):
@@ -92,8 +95,6 @@ def login_view(request):
         except Exception as e:
             return JsonResponse({'message': str(e)}, status=400)
         
-
-
 @csrf_exempt
 def chatbot_view(request):
     if request.method == 'GET':
@@ -116,8 +117,6 @@ def chatbot_view(request):
                 'message': str(e),
                 'status': 'error'
             }, status=500)
-
-
 
 def questionnaire_view(request):
     """Render the questionnaire page."""

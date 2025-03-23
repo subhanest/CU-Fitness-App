@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'myapp',
     'meals',
     'exercise'
-    
+    'allapps',
 ]
 
 AUTH_USER_MODEL = 'myapp.CustomUser'

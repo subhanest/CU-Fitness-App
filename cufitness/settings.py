@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'meals',
-    'exercise',
+    'exercise'
+    'allapps,
 ]
 
 AUTH_USER_MODEL = 'myapp.CustomUser'

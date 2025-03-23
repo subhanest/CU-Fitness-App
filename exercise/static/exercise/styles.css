@@ -5,232 +5,202 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: #333;
-    background-color: #f5f5f5;
-}
-
-.container {
+  }
+  
+  .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
-}
-
-/* Navigation Bar */
-.navbar {
+  }
+  
+  /* Header Styles */
+  header {
     background: #2c3e50;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar ul {
+    padding: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  
+  nav {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar a {
-    color: #fff;
+    gap: 40px;
+  }
+  
+  nav a {
+    color: white;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease-in-out;
-}
-
-.navbar a:hover {
-    color: #e74c3c;
-}
-
-/* Header Section */
-.header {
-    background: linear-gradient(to right, #2c3e50, #34495e);
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background-color: #3a5b92;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: #ff6a13;
+    transform: scale(1.1);
+  }
+  
+  /* ✅ Hero Section Styling */
+  .fitness-image {
+    width: 100vw;
+    height: 90vh;
+    background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Section styling */
+  .section {
+    margin: 30px 0;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
     color: #fff;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-.header p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.btn-primary {
-    display: inline-block;
-    background: #e74c3c;
+    background-color: #ff6a13;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .section label {
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 16px;
+  }
+  
+  .section select, .section input {
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    width: 250px;
+    font-size: 16px;
+  }
+  
+  .section button {
+    background-color: #ff6a13;
     color: #fff;
     padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease-in-out;
-}
-
-.btn-primary:hover {
-    background: #c0392b;
-}
-
-/* Features Section */
-.features {
-    background: #fff;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.features h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.feature-item {
-    background: #ecf0f1;
-    padding: 25px;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-}
-
-/* Moon Colony Diet Plan */
-.moon-diet {
-    background: #34495e;
-    color: #fff;
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.moon-diet h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-/* Testimonials */
-.testimonials {
-    background: #fff;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.testimonial-item {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    font-style: italic;
-}
-
-.testimonial-item span {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* FAQ Section */
-.faq {
-    background: #f5f5f5;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.faq-item {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.faq-item h3 {
-    margin-bottom: 10px;
-}
-
-/* Support Chat */
-.chat-bar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.chat-btn {
-    background: #e74c3c;
-    color: #fff;
-    padding: 12px 20px;
+    font-size: 18px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .section button:hover {
+    background-color: #e55b0f;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* AI Adaptive Workout and Meal Suggestions */
+  .adaptive-workout, .ai-meal-plan {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .adaptive-workout h2, .ai-meal-plan h2 {
+    color: #fff;
+    background-color: #3a5b92;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 26px;
+  }
+  
+  /* Styling for the chatbox */
+  .chatbox {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 12px;
+    height: 300px;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .chatbox p {
+    padding: 8px;
+    background-color: #a7c6e6;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+  
+  #user-message {
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    width: 75%;
+    margin-right: 15px;
     font-size: 16px;
-}
-
-.chat-box {
-    display: none;
-    position: absolute;
-    bottom: 50px;
-    right: 0;
-    width: 250px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.chat-header {
-    background: #2c3e50;
+  }
+  
+  /* Footer styling */
+  footer {
+    margin-top: 40px;
+    font-size: 14px;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
+    background-color: #2c3e50;
     text-align: center;
-    border-radius: 10px 10px 0 0;
-}
-
-.chat-body {
-    padding: 10px;
-}
-
-.chat-input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-top: 1px solid #ddd;
-    border-radius: 0 0 10px 10px;
-}
-
-/* Call to Action */
-.cta {
-    text-align: center;
-    padding: 60px 20px;
-    background: #e74c3c;
-    color: #fff;
-}
-
-.cta h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-/* Footer */
-.footer {
-    background: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
-}
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .social-links img {
+    height: 24px;
+  }
+  

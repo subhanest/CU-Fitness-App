@@ -13,17 +13,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
     path('explore/', include('allapps.urls')),
+    path('nutrition/', include('meals.urls')),
 
-    # ✅ This brings back your /fitness/ homepage
     path('fitness/', views.home, name='fitness-home'),
-
-    # ✅ APIs (ViewSets)
     path('api/', include(router.urls)),
-
-    # ✅ Function-based APIs (chart, log, progress, chatbot)
     path('api/', include('exercise.urls')),
-
-    # ✅ For workout and meal recommendation
     path('workout/', include('exercise.urls')),
     path('meal/', include('exercise.urls')),
 ]

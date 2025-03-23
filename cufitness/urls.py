@@ -21,7 +21,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-    path('explore/', views.explore, name='explore'),
     path('nutrition/', include('meals.urls')),
      path('fitness/', include('exercise.urls')),
 

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings  # ✅ Use custom user model
+
 
 # Workout Plan Model
 class WorkoutPlan(models.Model):
@@ -8,12 +9,13 @@ class WorkoutPlan(models.Model):
     goal = models.CharField(max_length=100)  # e.g., 'muscle_gain', 'weight_loss'
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):  # ✅ Fixed __str__ method
+    def __str__(self):
         return self.name
 
-# Workout Performance Model (NEW)
+
+# Workout Performance Model
 class WorkoutPerformance(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     workout_plan = models.ForeignKey(WorkoutPlan, on_delete=models.CASCADE, null=True, blank=True)
     exercise = models.CharField(max_length=100)
     sets = models.IntegerField()
@@ -26,9 +28,10 @@ class WorkoutPerformance(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.exercise} ({self.difficulty})"
 
+
 # Nutrition Plan Model
 class NutritionPlan(models.Model):
-    meal_type = models.CharField(max_length=100)  # e.g., 'breakfast', 'lunch', 'dinner'
+    meal_type = models.CharField(max_length=100)
     meal_name = models.CharField(max_length=255)
     calories = models.IntegerField()
     protein = models.IntegerField()
@@ -39,9 +42,10 @@ class NutritionPlan(models.Model):
     def __str__(self):
         return self.meal_name
 
-# AI-Generated Meal Plan Model (NEW)
+
+# AI-Generated Meal Plan Model
 class MealPlan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     meal_type = models.CharField(max_length=10, choices=[('Breakfast', 'Breakfast'), ('Lunch', 'Lunch'), ('Dinner', 'Dinner')])
     calories = models.IntegerField()
     protein = models.FloatField()
@@ -54,11 +58,12 @@ class MealPlan(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.meal_name} ({self.meal_type})"
 
+
 # Progress Tracker Model
 class ProgressTracker(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     weight = models.FloatField()
-    goal_weight = models.FloatField()  # ✅ Added this field
+    goal_weight = models.FloatField()
     body_fat_percentage = models.FloatField()
     muscle_mass = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -66,31 +71,22 @@ class ProgressTracker(models.Model):
     def __str__(self):
         return f"Progress for {self.user.username}"
 
+
 # User Profile Model
-
-
-from django.db import models
-from django.contrib.auth.models import User
-
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    age = models.IntegerField(default=18)  # ✅ Set a default value to prevent errors
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    age = models.IntegerField(default=18)
     fitness_level = models.CharField(max_length=100, default="Beginner")
     goal = models.CharField(max_length=100, default="weight_loss")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username
-    
-    
-
-from django.db import models
-from django.contrib.auth.models import User
 
 
-
+# Workout Log Model
 class WorkoutLog(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     exercise = models.CharField(max_length=100)
     sets = models.IntegerField()
     reps = models.IntegerField()
@@ -99,5 +95,3 @@ class WorkoutLog(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.exercise} ({self.date})"
-
-

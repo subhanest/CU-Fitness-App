@@ -22,7 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
     path('nutrition/', include('meals.urls')),
-     path('fitness/', include('exercise.urls')),
+    path('fitness/', include('exercise.urls')),
+    path('explore/', include('allapps.urls')),
+
+    
 
    
 ]

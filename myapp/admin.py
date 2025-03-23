@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # from django.contrib import admin
 
 # from .models import User
@@ -51,7 +49,6 @@
 # admin.site.register(CustomUser, CustomUserAdmin)
 # admin.site.register(UserSession, UserSessionAdmin)
 
->>>>>>> 66365f4796147ac91538717360efc7a2bb903171
 from django.contrib import admin
 from .models import CustomUser, UserQuestionnaire, UserSession
 

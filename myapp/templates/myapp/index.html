@@ -20,6 +20,10 @@
       href="{% static 'myApp/styles.css' %}?v={{ timestamp }}"
     />
     <link
+      rel="stylesheet"
+      href="{% static 'myapp/css/ai_agent.css' %}?v={{ timestamp }}"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
@@ -28,7 +32,7 @@
     <!-- Header Section -->
     <header class="header">
       <div class="container">
-        <div class="logo">
+        <div class="logo" onclick="goHome()">
           <img src="{% static 'myapp/logo.png' %}" alt="CUFitness Logo" />
           <span>CUFitness</span>
         </div>
@@ -42,9 +46,15 @@
             </ul>
           </nav>
           <div class="cta">
+            {% if request.user.is_authenticated %}
+            <!-- Show dashboard button for authenticated users -->
+            <a href="#" class="btn-dashboard">Dashboard</a>
+            {% else %}
             <a href="{% url 'log__in' %}" class="btn-login">Login</a>
             <div class="vl"></div>
             <a href="{% url 'sign__up' %}" class="btn-register">Sign Up</a>
+            <!-- Show login/signup buttons for unauthenticated users -->
+            {% endif %}
           </div>
         </div>
       </div>
@@ -184,11 +194,45 @@
       </div>
     </section>
 
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+      <!-- Chatbot Button -->
+      <button class="chatbot-button" onclick="toggleChatBox()">
+        <i class="fa fa-robot"></i>
+      </button>
+      <!-- Chatbox -->
+      <div class="chatbox" id="chatbox">
+        <!-- Chatbox Header -->
+        <div class="chatbox-header">
+          <span>AI Fitness Agent</span>
+          <button class="close-button" onclick="toggleChatBox()">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </div>
+        <!-- Chatbox Messages -->
+        <div class="chatbox-messages" id="chatbox-messages">
+          <!-- Example messages -->
+          <div class="message bot-message">
+            Hello! How can I assist you today?
+          </div>
+        </div>
+        <!-- Chatbox Input -->
+        <div class="chatbox-input">
+          <input type="text" id="chatbox-input" placeholder="Ask me..." />
+          <button onclick="sendMessage()">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer Section -->
     <footer class="footer">
       <div class="container">
         <p>&copy; 2023 CUFitness. All rights reserved.</p>
       </div>
     </footer>
+
+    <script src="{% static 'myapp/js/home.js' %}"></script>
   </body>
 </html>

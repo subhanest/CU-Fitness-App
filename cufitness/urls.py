@@ -17,13 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . import views
+from exercise import views
+from rest_framework.routers import DefaultRouter
+
+# Create a router for the viewsets
+router = DefaultRouter()
+router.register(r'workout-plans', views.WorkoutPlanViewSet)
+router.register(r'nutrition-plans', views.NutritionPlanViewSet)
+router.register(r'progress-trackers', views.ProgressTrackerViewSet)
+router.register(r'user-profiles', views.UserProfileViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-    path('explore/', views.explore, name='explore'),
     path('nutrition/', include('meals.urls')),
-     path('fitness/', include('exercise.urls')),
+    path('fitness/', include('exercise.urls')),
+    path('explore/', include('allapps.urls')),
+
+    
 
    
 ]

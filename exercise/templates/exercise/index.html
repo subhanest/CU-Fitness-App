@@ -1,175 +1,140 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personalized Fitness - CUFitness</title>
-    <!-- Corrected CSS Link -->
-    <link rel="stylesheet" href="{% static 'exercise/styles.css' %}">
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <ul>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#explore">Explore</a></li>
-        <li><a href="#nutrition">Nutrition</a></li>
-        <li><a href="#settings">Settings</a></li>
-      </ul>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU_Fitness</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'exercise/styles.css' %}">
 
-    <!-- Header Section -->
-    <header class="header">
-      <div class="container">
-        <h1>CUFitness: Tailored Fitness & Nutrition for You</h1>
-        <p>
-          Empowering Concordia University students, faculty, and staff to
-          achieve their health goals with personalized tools.
-        </p>
-        <a href="#features" class="btn-primary">Learn More</a>
-      </div>
-    </header>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-      <div class="container">
-        <h2>Why Choose Personalized Fitness?</h2>
-        <div class="feature-grid">
-          <div class="feature-item card">
-            <h3>Tailored Workout Plans</h3>
-            <p>
-              Custom fitness plans designed to fit your schedule, preferences,
-              and goals.
-            </p>
-          </div>
-          <div class="feature-item card">
-            <h3>Personalized Diet Plans</h3>
-            <p>
-              Meal recommendations tailored to dietary restrictions, budgets,
-              and campus life.
-            </p>
-          </div>
-          <div class="feature-item card">
-            <h3>Progress Tracking</h3>
-            <p>
-              Visualize your fitness journey with detailed analytics and
-              progress charts.
-            </p>
-          </div>
-          <div class="feature-item card">
-            <h3>Community Support</h3>
-            <p>
-              Connect with fellow Concordians to stay motivated and inspired.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Moon Colony Diet Plan Feature -->
-    <section class="moon-diet">
-      <div class="container">
-        <h2>Even Beyond Earth!</h2>
-        <p>
-          We’re innovating for the future with tailored diet plans for moon
-          colonies. Stay ahead of the curve with cutting-edge nutrition science.
-        </p>
-      </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-      <div class="container">
-        <h2>What Our Users Say</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial-item">
-            <p>
-              "I'm tired of generic diet plans. This app finally considers my
-              busy schedule and food preferences!"
-            </p>
-            <span>- Participant 1</span>
-          </div>
-          <div class="testimonial-item">
-            <p>
-              "Detailed analytics on my workouts and nutrition help me fine-tune
-              my training."
-            </p>
-            <span>- Participant 12</span>
-          </div>
-          <div class="testimonial-item">
-            <p>
-              "As someone with gluten intolerance, I love the tailored recipe
-              recommendations."
-            </p>
-            <span>- Participant 7</span>
-          </div>
-        </div>
-      </div>
-    </section>
+</head>
+<body>
 
-    <!-- FAQ Section -->
-    <section class="faq">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-          <h3>How do I get started?</h3>
-          <p>Simply sign up and fill in your fitness and nutrition preferences to receive a personalized plan.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Is the platform free to use?</h3>
-          <p>Yes! CUFitness is free for all Concordia University students, faculty, and staff.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Can I track my progress over time?</h3>
-          <p>Absolutely! Our analytics tools help you monitor your fitness and dietary progress.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Who can I contact for support?</h3>
-          <p>You can reach out to our support team via email or our in-app support chat.</p>
-        </div>
-      </div>
-    </section>
+    <header>
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
 
-    <!-- Support Chat Bar -->
-    <div class="chat-bar">
-      <button class="chat-btn" onclick="toggleChat()">💬 Chat Support</button>
-      <div class="chat-box" id="chatBox">
-        <div class="chat-header">Support Chat</div>
-        <div class="chat-body">
-          <p>Welcome to support! How can we help you?</p>
+
+            <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <a href="/">
+                    <img src="{% static 'exercise/images/favicon.ico' %}" alt="CU_Fitness Logo" width="40" height="40">
+                </a>
+                <span style="font-size: 24px; font-weight: bold; color: white;">CU_Fitness</span>
+              </div>
+              
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Nutrition</a>
+            <a href="#">Explore</a>
+            <a href="#">Settings</a>
+          </nav>
         </div>
-        <input type="text" class="chat-input" placeholder="Type a message..." />
-      </div>
+      </header>
+      
+        
+        <!-- ✅ Fitness Image Section (Added before BMI Calculator) -->
+        <!-- ✅ Fixed Fitness Image -->
+<!-- ✅ Fitness Image Before BMI Calculator -->
+<div class="fitness-image">
+    <img src="https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&w=800" 
+         alt="Fitness Motivation">
+</div>
+
+<div class="section" id="log-workout-section">
+    <h2>🏋️ Log Your Workout</h2>
+    <input type="text" id="exercise-name" placeholder="Exercise Name">
+    <input type="number" id="sets" placeholder="Sets">
+    <input type="number" id="reps" placeholder="Reps">
+    <input type="number" id="duration" placeholder="Duration (minutes)">
+    <button id="log-workout-btn">Log Workout</button>
+    <div id="log-workout-result"></div>
+</div>
+
+<div class="section" id="workout-progress">
+    <h2>📈 Your Progress & AI Suggestion</h2>
+    <button id="get-progress-btn">Get Progress Suggestion</button>
+    <div id="progress-suggestion" style="margin-top: 10px;"></div>
+</div>
+
+
+<div class="section">
+    <h2>📊 Progress Chart</h2>
+    <canvas id="progressChart" width="400" height="200"style="border: 1px solid red;"></canvas>></canvas>
+  </div>
+
+  
+        <!-- ✅ BMI Calculator Section -->
+        <div class="section bmi-calculator">
+            <h2>BMI Calculator</h2>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="kg" required>
+            <label for="height">Height (m):</label>
+            <input type="number" id="height" placeholder="m" step="0.01" required>
+            <button onclick="calculateBMI()">Calculate BMI</button>
+            <p id="bmi-result"></p>
+        </div>
+
+        <!-- ✅ AI-Generated Adaptive Workout Suggestions -->
+        <div class="section" id="ai-workout-section">
+            <h2>🔥 AI Adaptive Workout Suggestions</h2>
+            
+            <!-- Workout Selection -->
+            <label for="workout-goal">Select Workout Goal:</label>
+            <select id="workout-goal">
+                <option value="muscle_gain">Muscle Gain</option>
+                <option value="weight_loss">Weight Loss</option>
+                <option value="maintain">Maintain</option>
+            </select>
+
+            <button id="fetch-workout-btn">Get Workout Suggestions</button>
+
+            <div id="workout-recommendation">
+                <p>Select a workout goal and click the button to get workout suggestions.</p>
+            </div>
+        </div>
+
+        <!-- ✅ AI-Generated Meal Plan Suggestions -->
+        <div class="section" id="ai-meal-section">
+            <h2>🍽️ AI Meal Plan Suggestions</h2>
+            
+            <!-- Meal Selection -->
+            <label for="meal-type">Select Meal Type:</label>
+            <select id="meal-type">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+            </select>
+
+            <button id="fetch-meal-btn">Get Meal Suggestions</button>
+
+            <div id="meal-recommendation">
+                <p>Select a meal type and click the button to get meal suggestions.</p>
+            </div>
+        </div>
+
+        <!-- ✅ Chatbot Section -->
+        <div class="section" id="chatbot-section">
+            <h2>Chat with AI</h2>
+            <div class="chatbox" id="chatbox"></div>
+            <input type="text" id="user-message" placeholder="Ask me anything...">
+            <button id="send-message">Send</button>
+        </div>
+
+        <!-- ✅ Footer -->
+        <footer>
+            <div class="motivational-quotes">
+                <p>"The only bad workout is the one that didn’t happen."</p>
+                <p>"Push yourself because no one else is going to do it for you."</p>
+                <p>"Your body can stand almost anything. It’s your mind that you have to convince."</p>
+            </div>
+            <p>&copy; 2025 CU_Fitness. All rights reserved.</p>
+        </footer>
     </div>
 
-    <script>
-      function toggleChat() {
-        var chatBox = document.getElementById("chatBox");
-        chatBox.style.display = chatBox.style.display === "none" || chatBox.style.display === "" ? "block" : "none";
-      }
-    </script>
-
-    <!-- Call to Action Section -->
-    <section class="cta">
-      <div class="container">
-        <h2>Start Your Fitness Journey Today</h2>
-        <p>
-          Join thousands of Concordians who are achieving their health goals
-          with CUFitness.
-        </p>
-        <a href="#" class="btn-primary">Sign Up Now</a>
-      </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-      <div class="container">
-        <p>
-          &copy; 2025 Personalized Fitness | Designed for Concordia University
-        </p>
-      </div>
-    </footer>
-  </body>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
 </html>

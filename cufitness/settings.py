@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'myapp',
     'meals',
     'exercise',
+    'allapps',
+    'rest_framework',  # Django REST framework for API functionality
 ]
 
 AUTH_USER_MODEL = 'myapp.CustomUser'

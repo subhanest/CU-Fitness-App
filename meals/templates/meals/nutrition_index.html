@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CUFitness - Nutrition Page</title>
     <link rel="stylesheet" href="{% static 'meals/css/style.css' %}">
+    <!-- Link to the external CSS for the chatbox -->
+    <link rel="stylesheet" type="text/css" href="{% static 'meals/css/chatbot.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -33,6 +35,7 @@
         <a href="#meal-suggestions">Meal Suggestions</a>
         <a href="#meal-logs">Log Meals</a>
         <a href="#progress-tracker">Track Progress</a>
+        <a href="#Chat-Box">Chat Box</a>
     </div>
 
     <!-- Main Content -->
@@ -70,7 +73,17 @@
                 <button type="submit" class="btn-primary">Update Preferences</button>
             </form>
         </section>
-
+        <!-- Chatbox Section -->
+        <section id="Chat-Box">
+            <div id="chat-container">
+                <div id="chat-box"></div>
+                <div id="chat-input-area">
+                  <input type="text" id="chat-input" placeholder="Ask me anything about nutrition...">
+                  <button id="send-btn">Send</button>
+                  <button id="reset-btn">Reset Chat</button>
+                </div>
+              </div>
+                </section>
         <!-- AI Meal Suggestions - Daily Plan -->
     <section id="meal-suggestions">
     <h2>AI-Generated Meal Plan for Today</h2>
@@ -186,6 +199,8 @@
         </div>
     </footer>
     <script src="{% static 'meals/js/main.js' %}"></script>
+    <!-- Include Chatbox JavaScript -->
+<script src="{% static 'meals/js/chatbot.js' %}"></script>
     
 </body>
 </html>

@@ -17,8 +17,6 @@ from .models import CustomUser, UserQuestionnaire
 def home(request):
     return render(request, 'myapp/index.html', {'timestamp': now().timestamp()})
 
-def explore(request):
-    return render(request, 'myApp/ER.html')  # Explore Page
 
 def settings(request):
     return render(request, 'myApp/settings.html') # Settings Page

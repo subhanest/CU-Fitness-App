@@ -34,7 +34,7 @@ class WorkoutPlanViewSet(viewsets.ModelViewSet):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def get_workout_recommendation(request):
     """Returns AI-generated structured workout recommendations."""
     goal = request.GET.get('goal', 'weight_loss')  # Default to weight loss
@@ -67,7 +67,7 @@ class NutritionPlanViewSet(viewsets.ModelViewSet):
 
 # ✅ AI-Generated Meal Plan Recommendation (Dynamic)
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def get_meal_recommendation(request):
     """Returns AI-generated structured meal plan suggestions."""
     meal_type = request.GET.get('meal_type', 'lunch')  # Default to lunch
@@ -90,11 +90,46 @@ def ai_chatbot(request):
 
     # AI Chatbot Responses
     responses = {
-        "hello": "Hi there! How can I assist you with your fitness goals?",
-        "workout plan": "I recommend strength training and cardio. Do you want a specific plan?",
-        "meal plan": "Try high-protein meals with balanced carbs and fats.",
-        "bmi": "Use the calculator on our homepage to check your BMI.",
-        "bye": "Goodbye! Stay fit and take care!"
+    
+    "hello": "Hi there! How can I assist you with your fitness goals?",
+    "hi": "Hey! Ready to level up your fitness today?",
+    
+    # 🔥 Fitness-related
+    "fitness": "Fitness is a journey, not a destination. Are you focusing on weight loss or muscle building?",
+    "exercise": "Consistency is key! Push-ups, squats, and planks are great to start.",
+    "workout": "Do you want a home workout, gym workout, or something goal-specific?",
+    "workout plan": "I recommend strength training and cardio. Want a custom plan for your goal?",
+    
+    # 💪 Goals
+    "muscle gain": "For muscle gain, aim for progressive overload and eat enough protein.",
+    "fat loss": "To lose fat, stay in a calorie deficit and do HIIT or cardio + weights.",
+    "belly fat": "Targeting belly fat? Mix core workouts with overall fat-burning routines and clean eating.",
+    "fat reduce": "Start with cardio, eat clean, and avoid sugar. Need a fat-burning plan?",
+    "ideal weight": "Ideal weight depends on height, age, and muscle mass. Want help calculating it?",
+    "ideal": "Let me help you find your ideal body composition. Just tell me your goal!",
+
+    # 🍽 Meal & Nutrition
+    "meal plan": "Balanced meals with protein, carbs, and healthy fats are key. Want a breakfast, lunch, or dinner plan?",
+    "breakfast": "Try oatmeal, Greek yogurt, or eggs with toast to start strong!",
+    "lunch": "Grilled chicken, quinoa, or a veggie bowl keeps energy up mid-day.",
+    "dinner": "Keep it light but filling — like fish and steamed veggies or tofu stir-fry.",
+    "snack": "Almonds, protein bars, or fruits like apples are great between meals.",
+    "hydration": "Water is essential! Drink 2.5–3 liters daily. 💧",
+
+    # 📏 Metrics
+    "bmi": "Use the calculator on our homepage or tell me your height and weight.",
+    "progress": "Track your sets, reps, and weekly stats to stay motivated.",
+    
+    # 🧘‍♂️ Recovery & Mental Boost
+    "rest day": "Rest is just as important as training! Try light yoga or walking.",
+    "stretching": "Always stretch post-workout to avoid injury and improve flexibility.",
+    "motivation": "You've got this 💪 Every rep brings you closer to your goal!",
+
+    # 👋 Closing
+    "bye": "Goodbye! Stay strong and focused 💯",
+    "goodbye": "Catch you later, champ! Keep grinding!"
+
+
     }
 
     bot_response = responses.get(user_message, "I'm not sure, but I can help with workouts and meals!")

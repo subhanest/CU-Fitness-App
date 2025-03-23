@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . import views
+from exercise import views
 from rest_framework.routers import DefaultRouter
 
 # Create a router for the viewsets

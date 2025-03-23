@@ -13,17 +13,10 @@ router.register(r'progress-trackers', views.ProgressTrackerViewSet, basename="pr
 router.register(r'user-profiles', views.UserProfileViewSet, basename="userprofile")
 
 urlpatterns = [
-    path('', views.home, name='home'),  # ✅ Home Page
-    path('api/', include(router.urls)),  # ✅ Include ViewSet API routes
-
-    # ✅ AI Adaptive Workouts & Meal Plans
-    path('workout/recommend/', views.get_workout_recommendation, name='workout-recommend'),
-    path('meal/recommend/', views.get_meal_recommendation, name='meal-recommend'),
-
-    # ✅ AI Chatbot API
-    path('api/ai_chatbot/', views.ai_chatbot, name='ai-chatbot'),
-
-    path('api/log_workout/', WorkoutLogAPIView.as_view(), name='log_workout'),
-     path('api/workout_progress/', WorkoutProgressAPIView.as_view(), name='workout_progress'),
-     path('api/workout_chart/', WorkoutChartDataAPIView.as_view(), name='workout_chart'),
+    path('workout_chart/', views.WorkoutChartDataAPIView.as_view(), name='workout_chart'),
+    path('log_workout/', views.WorkoutLogAPIView.as_view(), name='log_workout'),
+    path('workout_progress/', views.WorkoutProgressAPIView.as_view(), name='workout_progress'),
+    path('ai_chatbot/', views.ai_chatbot, name='ai_chatbot'),
+    path('recommend/', views.get_workout_recommendation, name='workout_recommend'),
+    path('meal_recommend/', views.get_meal_recommendation, name='meal_recommend'),
 ]

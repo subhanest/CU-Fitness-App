@@ -9,7 +9,7 @@ from django.utils.timezone import now  # type: ignore
 from django.views.decorators.csrf import csrf_exempt
 
 from .ai_service import GroqAIService
-from .models import CustomUser, UserQuestionnaire
+from database.models import CustomUser, UserQuestionnaire
 
 
 # Create your views here.

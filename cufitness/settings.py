@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'exercise',
     'allapps',
     'rest_framework',  # Django REST framework for API functionality
+    'database',  # For Database 
 ]
 
-AUTH_USER_MODEL = 'myapp.CustomUser'
+AUTH_USER_MODEL = 'database.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

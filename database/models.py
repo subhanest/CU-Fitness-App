@@ -1,19 +1,6 @@
+from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
+                                        PermissionsMixin)
 from django.db import models
-
-
-class User(models.Model):
-    name = models.CharField(max_length=255) # username
-    email = models.EmailField(unique=True) # email
-    phone = models.CharField(max_length=15, blank=True, null=True) # phone number (optional)
-    age = models.PositiveIntegerField(blank=True, null=True) # age of user (optional)
-    gender = models.CharField(max_length=10, blank=True, null=True) # gender of user (optional)
-
-    def __str__(self):
-        return self.name
-    
-
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
 
@@ -51,6 +38,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)  # Optional phone number
+    age = models.PositiveIntegerField(blank=True, null=True)  # Optional age
+    gender = models.CharField(max_length=10, blank=True, null=True)  # Optional gender
     
     # Additional fields from the sign-up form
     receive_updates = models.BooleanField(default=False)
@@ -82,23 +72,23 @@ class UserSession(models.Model):
     
     class Meta:
         verbose_name = "User Session"
-        verbose_name_plural = "User Sessions"    
+        verbose_name_plural = "User Sessions"
 
 
 class UserQuestionnaire(models.Model):
     """Model to store user responses to the fitness questionnaire."""
     
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='questionnaire')
-    fitness_goals = models.CharField(max_length=255, blank=True)
-    body_type = models.CharField(max_length=255, blank=True)
-    daily_caloric_need = models.IntegerField(null=True, blank=True)
-    workout_frequency = models.CharField(max_length=255, blank=True)
-    macronutrient_ratio = models.CharField(max_length=255, blank=True)
-    dietary_restrictions = models.CharField(max_length=255, blank=True)
-    sleep_hours = models.IntegerField(null=True, blank=True)
-    work_schedule = models.CharField(max_length=255, blank=True)
-    supplements = models.CharField(max_length=255, blank=True)
-    water_intake = models.CharField(max_length=255, blank=True)
+    fitness_goals = models.CharField(max_length=255, default="General health")  # Required with default
+    body_type = models.CharField(max_length=255, default="Average")  # Required with default
+    daily_caloric_need = models.IntegerField(default=2000)  # Required with default
+    workout_frequency = models.CharField(max_length=255, default="3 days/week, Moderate")  # Required with default
+    macronutrient_ratio = models.CharField(max_length=255, default="Balanced")  # Required with default
+    dietary_restrictions = models.CharField(max_length=255, default="None")  # Required with default
+    sleep_hours = models.IntegerField(default=7)  # Required with default
+    work_schedule = models.CharField(max_length=255, default="9-5 Job")  # Required with default
+    supplements = models.CharField(max_length=255, default="None")  # Required with default
+    water_intake = models.CharField(max_length=255, default="2 liters")  # Required with default
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

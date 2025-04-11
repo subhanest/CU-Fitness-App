@@ -8,8 +8,9 @@ from django.shortcuts import redirect
 from django.utils.timezone import now  # type: ignore
 from django.views.decorators.csrf import csrf_exempt
 
-from .ai_service import GroqAIService
 from database.models import CustomUser, UserQuestionnaire
+
+from .ai_service import GroqAIService
 
 
 # Create your views here.
@@ -33,14 +34,23 @@ def chatbot_view(request):
 @login_required
 def edit_profile(request):
     user = request.user
-    questionnaire = user.questionnaire
+    print("Inside edit profile request")
+    print(request.user.is_authenticated)
+    print(user)
+    try:
+        questionnaire = user.questionnaire
+        print("Questionnaire does exist")
+        print(questionnaire)
+    except Exception as e:
+        print("Questionnaire not exist")
+        questionnaire = create_default_questionnare(request)
 
     if request.method == 'POST':
         # Update User model
         user.name = request.POST.get('name')
         user.email = request.POST.get('email')
-        user.phone = request.POST.get('phone')
-        user.age = request.POST.get('age')
+        user.phone = request.POST.get('phone') if request.POST.get('phone') is not None else ''
+        user.age = request.POST.get('age') if request.POST.get('age') is not None else 20
         user.gender = request.POST.get('gender')
         user.save()
 
@@ -59,6 +69,31 @@ def edit_profile(request):
 
         return redirect('home')  # Redirect to the profile page after saving
     return render(request, 'myapp/edit_profile.html') # Edit Profile Page
+
+def create_default_questionnare(request):
+    if not request.user.is_authenticated:
+        return None
+    try:        
+        # Create or update questionnaire for user
+        questionnaire, created = UserQuestionnaire.objects.get_or_create(user=request.user)
+        
+        # Update fields
+        questionnaire.fitness_goals = ""
+        questionnaire.body_type = ""
+        questionnaire.daily_caloric_need = 0
+        questionnaire.workout_frequency = ""
+        questionnaire.macronutrient_ratio = ""
+        questionnaire.dietary_restrictions = ""
+        questionnaire.sleep_hours = 0
+        questionnaire.work_schedule = ""
+        questionnaire.supplements = ""
+        questionnaire.water_intake = ""
+        
+        questionnaire.save()
+        
+        return questionnaire
+    except Exception as e:
+        return None
 
 def user_logout(request):
     logout(request)  # Logs out the user

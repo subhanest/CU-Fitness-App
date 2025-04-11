@@ -89,11 +89,11 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" value="{{ user.phone }}">
+                <input type="text" id="phone" name="phone" value="{{ user.phone|default_if_none:'' }}">
             </div>
             <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="number" id="age" name="age" value="{{ user.age }}">
+                <input type="number" id="age" name="age" value="{{ user.age|default:0 }}">
             </div>
             <div class="form-group">
                 <label for="gender">Gender:</label>

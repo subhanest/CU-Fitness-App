@@ -1,12 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy & Settings | CUFitness</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy & Settings | CUFitness</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #333;
+      background-color: #ecf0f1;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Privacy Page Styles */
+    .privacy-settings {
+      padding: 80px 0;
+      background: #fff;
+    }
+
+    .privacy-settings h2 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .settings-group {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+
+    .settings-group h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+
+    .settings-group p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Privacy & Settings Page!</h1>
-    <p>The content of Privacy & Settings page will be added here.</p>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo" onclick="window.location.href='/'">
+        <img src="logo.png" alt="Logo" />
+        CUFitness
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Fitness</a></li>
+          <li><a href="#">Nutrition</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Privacy & Settings Section -->
+  <section class="privacy-settings">
+    <div class="container">
+      <h2>Privacy & Settings</h2>
+
+      <div class="settings-group">
+        <h3>University Code of Conduct</h3>
+        <p>
+          Please follow university rules , a message from Softgrid. Enrolled in COEN 6311. Thanks
+        </p>
+      </div>
+
+     
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 CUFitness. All rights reserved.
+  </footer>
+
 </body>
 </html>

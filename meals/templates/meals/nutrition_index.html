@@ -40,124 +40,210 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- User Input Section -->
+        <!--User Input Section-->
         <section id="user-input">
             <h2>Set Your Preferences</h2>
-            <form>
-                <label for="goals">Fitness Goals:</label>
-                <select id="goals">
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="muscle-gain">Muscle Gain</option>
-                    <option value="general-health">General Health</option>
-                </select>
-        
-                <label for="diet">Dietary Preferences:</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="vegan" /> Vegan</label>
-                    <label><input type="checkbox" id="gluten-free" /> Gluten-Free</label>
-                </div>
-        
-                <label for="time">Available Cooking Time:</label>
-                <select id="time">
-                    <option value="15min">Under 15 minutes</option>
-                    <option value="30min">30 minutes</option>
-                    <option value="1hr">1 hour</option>
-                </select>
-        
-                <label for="target-weight">Target Weight Change (kg):</label>
-                <input type="number" id="target-weight" placeholder="Enter desired weight change (positive for gain, negative for loss)" />
-        
-                <label for="budget">Budget (per week):</label>
-                <input type="number" id="budget" />
-        
-                <button type="submit" class="btn-primary">Update Preferences</button>
-            </form>
-        </section>
-        <!-- Chatbox Section -->
-        <section id="Chat-Box">
-            <div id="chat-container">
-                <div id="chat-box"></div>
-                <div id="chat-input-area">
-                  <input type="text" id="chat-input" placeholder="Ask me anything about nutrition...">
-                  <button id="send-btn">Send</button>
-                  <button id="reset-btn">Reset Chat</button>
-                </div>
+            {% if message %}
+            <div id="save-message" style="text-align: center; color: green; font-weight: bold; margin: 10px auto;">
+            {{ message }}
+            </div>
+            <script>
+             setTimeout(function() {
+             var msg = document.getElementById('save-message');
+            if (msg) msg.style.display = 'none';
+            }, 3000); // hide after 3 seconds
+            </script>
+            {% endif %}
+            <form method="post">
+            {% csrf_token %}
+              <!-- Fitness Goal -->
+              <label for="fitness_goals">Fitness Goal:</label>
+              <select id="fitness_goals" name="fitness_goals">
+                <option value="lose" {% if form.fitness_goals.value == "lose" %}selected{% endif %}>Lose Weight</option>
+                <option value="maintain" {% if form.fitness_goals.value == "maintain" %}selected{% endif %}>Maintain Weight</option>
+                <option value="gain" {% if form.fitness_goals.value == "gain" %}selected{% endif %}>Gain Weight</option>
+              </select>
+              <!-- Current Weight -->
+              <label for="current-weight">Current Weight (kg):</label>
+              <input type="number" id="current-weight" name="current_weight" value="{{ form.current_weight.value }}" placeholder="Enter your current weight" />
+              
+              <!-- Target Weight -->
+              <label for="target-weight">Target Weight (kg):</label>
+              <input type="number" id="target-weight" name="target_weight" value="{{ form.target_weight.value }}" placeholder="Enter your target weight" />
+          
+              <!-- Activity Level -->
+            <label for="activity-level">Activity Level:</label>
+            <select id="activity-level" name="activity_level">
+            <option value="sedentary" {% if form.activity_level.value == "sedentary" %}selected{% endif %}>Sedentary (little or no exercise)</option>
+            <option value="light" {% if form.activity_level.value == "light" %}selected{% endif %}>Lightly active</option>
+            <option value="moderate" {% if form.activity_level.value == "moderate" %}selected{% endif %}>Moderately active</option>
+            <option value="active" {% if form.activity_level.value == "active" %}selected{% endif %}>Active</option>
+            <option value="very_active" {% if form.activity_level.value == "very_active" %}selected{% endif %}>Very active</option>
+            </select>
+
+          
+              <!-- Cooking Time -->
+              <label for="cooking-time">Available Cooking Time (minutes):</label>
+              <select id="cooking-time" name="cooking_time">
+                <option value="15" {% if form.cooking_time.value == 15 %}selected{% endif %}>Under 15 minutes</option>
+                <option value="30" {% if form.cooking_time.value == 30 %}selected{% endif %}>30 minutes</option>
+                <option value="60" {% if form.cooking_time.value == 60 %}selected{% endif %}>1 hour</option>
+
+              </select>
+          
+              <!-- Macronutrient Ratio -->
+              <label for="macro-ratio">Macronutrient Preference:</label>
+              <select id="macro-ratio" name="macronutrient_ratio">
+                <option value="balanced" {% if form.macronutrient_ratio.value == "balanced" %}selected{% endif %}>Balanced</option>
+                <option value="high_protein" {% if form.macronutrient_ratio.value == "high_protein" %}selected{% endif %}>High Protein</option>
+                <option value="low_carb" {% if form.macronutrient_ratio.value == "low_carb" %}selected{% endif %}>Low Carb</option>
+                <option value="low_fat" {% if form.macronutrient_ratio.value == "low_fat" %}selected{% endif %}>Low Fat</option>
+
+              </select>
+          
+              <!-- Diet Type -->
+              <label>Diet Type:</label>
+              <div class="checkbox-group">
+                <label><input type="radio" name="diet" value="omnivore" {% if form.diet.value == "omnivore" %}checked{% endif %}/> No Specific Diet</label>
+                <label><input type="radio" name="diet" value="vegetarian" {% if form.diet.value == "vegetarian" %}checked{% endif %}/> Vegetarian</label>
+                <label><input type="radio" name="diet" value="vegan" {% if form.diet.value == "vegan" %}checked{% endif %}/> Vegan</label>
+                <label><input type="radio" name="diet" value="paleo" {% if form.diet.value == "paleo" %}checked{% endif %}/> Paleo</label>
+                <label><input type="radio" name="diet" value="ketogenic" {% if form.diet.value == "ketogenic" %}checked{% endif %}/> Ketogenic</label>
               </div>
-                </section>
+
+            <!-- Dietary Restrictions -->
+            <label>Dietary Restrictions:</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="intolerances" value="gluten" {% if "gluten" in form.intolerances.value %}checked{% endif %}/> Gluten-Free</label>
+              <label><input type="checkbox" name="intolerances" value="dairy" {% if "dairy" in form.intolerances.value %}checked{% endif %}/> Dairy-Free</label>
+              <label><input type="checkbox" name="intolerances" value="egg" {% if "egg" in form.intolerances.value %}checked{% endif %}/> Egg-Free</label>
+              <label><input type="checkbox" name="intolerances" value="peanut" {% if "peanut" in form.intolerances.value %}checked{% endif %}/> Peanut-Free</label>
+              <label><input type="checkbox" name="intolerances" value="soy" {% if "soy" in form.intolerances.value %}checked{% endif %}/> Soy-Free</label>
+              <label><input type="checkbox" name="intolerances" value="seafood" {% if "seafood" in form.intolerances.value %}checked{% endif %}/> Seafood-Free</label>
+            </div>
+
+          
+              <!-- Daily Budget -->
+              <label for="daily-budget">Daily Budget (USD):</label>
+              <input type="number" id="daily-budget" name="daily_budget" value="{{ form.daily_budget.value }}" placeholder="e.g. 10" />
+
+          
+              <button type="submit" class="btn-primary">Update Preferences</button>
+            </form>
+          </section>
+          <section id="calorie-intake" style="margin-top: 30px;">
+            <h2 style="text-align: center;">Your Recommended Daily Calorie Intake</h2>
+          
+            {% if target_calories %}
+              <div style="
+                background-color: #f0f8ff;
+                border: 1px solid #007bff;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                font-weight: bold;
+                color: #333;
+                margin-top: 10px;">
+                🔥 <span style="color: #007bff;">{{ target_calories }} kcal/day</span>
+              </div>
+            {% else %}
+              <p style="text-align: center; color: #888;">Set your preferences to see your personalized calorie goal.</p>
+            {% endif %}
+          </section>
         <!-- AI Meal Suggestions - Daily Plan -->
-    <section id="meal-suggestions">
-    <h2>AI-Generated Meal Plan for Today</h2>
-    <div class="daily-meals">
-        <div class="meal-card">
-            <h3>Breakfast: Oatmeal with Berries</h3>
-            <p>Price: $3.50 | Time: 10 min</p>
-            <button class="btn-primary" onclick="toggleRecipe('breakfast-recipe')">View Recipe</button>
-            <div id="breakfast-recipe" class="recipe hidden">
-                <h4>Ingredients:</h4>
-                <ul>
-                    <li>1/2 cup rolled oats</li>
-                    <li>1 cup almond milk</li>
-                    <li>1/2 cup mixed berries</li>
-                    <li>1 tbsp honey</li>
-                </ul>
-                <h4>Preparation:</h4>
-                <p>Cook oats in almond milk for 5 minutes, stir in honey, and top with berries.</p>
+        <section id="meal-suggestions">
+            <h2>AI-Generated Meal Plan for Today</h2>
+            <form method="post" action="{% url 'generate_meal_plan' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn-secondary" style="margin-bottom: 1em;">🍽 Generate Meal Plan</button>
+            </form>
+            <div class="daily-meals"> 
+              {% if spoonacular_meals %}
+                {% for meal in spoonacular_meals %}
+                  <div class="meal-card">
+                    <h3>{{ meal.meal_type }}: {{ meal.title }}</h3>
+                    <p>Calories: {{ meal.calories }} kcal | Time: {{ meal.readyInMinutes }} min</p>
+                    <p>Price: ${{ meal.pricePerServing|floatformat:2 }}</p>  
+                    {% if meal.is_slow %}
+                    <p style="color: red;">⏱ This meal takes a bit longer to prepare.</p>
+                    {% endif %}                 
+                    <button class="btn-primary" onclick="toggleRecipe('recipe-{{ forloop.counter }}')">View Recipe</button>
+                    <div id="recipe-{{ forloop.counter }}" class="recipe hidden">
+                      <h4>Ingredients:</h4>
+                      <ul>
+                        {% for ingredient in meal.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                      </ul>
+                      <h4>Preparation:</h4>
+                      <p>{{ meal.instructions }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <p>No meals available. Please check your preferences or try again later.</p>
+              {% endif %}
             </div>
-        </div>
+            <div class="meal-budget-status">
+              <h4>Budget Summary</h4>
+              <p>Total cost of today's meals: <strong>${{ total_cost|floatformat:2 }}</strong></p>
+              <p>Your daily budget: <strong>${{ daily_budget|floatformat:2 }}</strong></p>
+            
+              {% if over_budget > 0 %}
+              <p style="color: red;"><strong>❌ Over budget by ${{ over_budget|floatformat:2 }}</strong></p>
+              {% else %}
+              <p style="color: green;"><strong>✅ You're within budget!</strong></p>
+              {% endif %}
 
-        <div class="meal-card">
-            <h3>Lunch: Grilled Chicken Salad</h3>
-            <p>Price: $7.50 | Time: 20 min</p>
-            <button class="btn-primary" onclick="toggleRecipe('lunch-recipe')">View Recipe</button>
-            <div id="lunch-recipe" class="recipe hidden">
-                <h4>Ingredients:</h4>
-                <ul>
-                    <li>1 grilled chicken breast</li>
-                    <li>1 cup mixed greens</li>
-                    <li>1/2 avocado, sliced</li>
-                    <li>1 tbsp olive oil</li>
-                    <li>1 tsp lemon juice</li>
-                </ul>
-                <h4>Preparation:</h4>
-                <p>Slice chicken, mix with greens, avocado, and drizzle with olive oil and lemon juice.</p>
             </div>
-        </div>
-
-        <div class="meal-card">
-            <h3>Dinner: Quinoa Stir-Fry</h3>
-            <p>Price: $6.00 | Time: 25 min</p>
-            <button class="btn-primary" onclick="toggleRecipe('dinner-recipe')">View Recipe</button>
-            <div id="dinner-recipe" class="recipe hidden">
-                <h4>Ingredients:</h4>
-                <ul>
-                    <li>1 cup cooked quinoa</li>
-                    <li>1/2 cup bell peppers, chopped</li>
-                    <li>1/2 cup broccoli</li>
-                    <li>1 tbsp soy sauce</li>
-                    <li>1 tsp sesame oil</li>
-                </ul>
-                <h4>Preparation:</h4>
-                <p>Stir-fry vegetables in sesame oil, add quinoa and soy sauce, and cook for 5 minutes.</p>
-            </div>
-        </div>
-    </div>
-   </section>
+            
+          </section>
+          
         <!-- Meal Logging Section - Weekly Log -->
     <section id="meal-logs"> 
         <div class="meal-log">
             <h2>Daily Meal Log</h2>
-            <form id="meal-log-form">
+            <form method="post" id="meal-log-form">
+              {% csrf_token %} 
+              <input type="hidden" name="meal_log_flag" value="true" />
+              <label for="meal-date">Date:</label>
+              <input type="date" name="meal_date" id="meal-date" value="{{ today_date|date:'Y-m-d' }}" required>           
                 <div id="meal-entries">
                     <div class="meal-entry">
                         <input type="text" name="food_name[]" placeholder="Food Name" required>
                         <input type="number" name="quantity[]" placeholder="Quantity" required>
                         <input type="time" name="time[]" required>
+                        <select name="meal_type[]" required>
+                          <option value="breakfast">Breakfast</option>
+                          <option value="lunch">Lunch</option>
+                          <option value="dinner">Dinner</option>
+                          <option value="snack">Snack</option>
+                        </select>
+                        <input type="number" name="calories[]" placeholder="Calories (optional)" min="0">
                         <button type="button" class="remove-entry" onclick="removeEntry(this)">X</button>
                     </div>
                 </div>
                 <button type="button" id="add-entry">Add Another</button>
                 <button type="submit">Submit Log</button>
             </form>
+            <h3>🍽️ Meals Logged Today</h3>
+            <ul>
+              {% for meal in logged_meals %}
+                <li>
+                  <strong>{{ meal.time }}</strong> – {{ meal.meal_type|title }}: 
+                  {{ meal.food_name }} ({{ meal.calories }} kcal)
+                  <form method="post" action="{% url 'edit_meal' meal.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="number" name="updated_calories" min="0" style="width:60px;" placeholder="Edit" />
+                    <button type="submit">Save</button>
+                  </form>
+                  
+                </li>
+              {% empty %}
+                <li>No meals logged yet for today.</li>
+              {% endfor %}
+            </ul>
+            
         </div>
     </section>
         <!-- Progress Tracking Section - Enhanced Graphical Progress -->
@@ -166,16 +252,23 @@
         <!-- Weight Progress Section -->
         <h2>Weight Progress</h2>
         <div class="progress-bar-weight">
-            <span></span>
+          <span style="width: 0%;"></span>
         </div>
-        <p id="weight-progress-info">Current Weight: <span id="current-weight">65</span> kg | Target Weight: 70 kg</p>
+        <p id="weight-progress-info">
+          Current Weight: <span id="current-weight">{{ current_weight }}</span> kg | 
+          Target Weight: <span id="target-weight">{{ target_weight }}</span> kg
+        </p>
 
         <!-- Daily Calorie Intake Progress -->
         <h3>Daily Calorie Intake</h3>
         <div class="progress-bar-calories">
             <span></span>
         </div>
-        <p id="calorie-info">Calories Consumed: <span id="current-calories">1800</span> kcal | Goal: 2500 kcal</p>
+        <p id="calorie-info">
+          Calories Consumed: <span id="current-calories">{{ daily_calories }}</span> kcal |
+          Goal: <span id="target-calories">{{ target_calories }}</span> kcal
+        </p>
+        
 
         <!-- Past Calorie Intake Graph -->
         <h3>Past Daily Calorie Intakes</h3>
@@ -189,15 +282,23 @@
         <p id="budget-info">Budget Spent: <span id="current-budget">350</span> | Weekly Budget: 500</p>
     </div>
    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 CUFitness. All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-        </div>
     </footer>
+<!-- Chatbox Popup -->
+<div id="chat-widget">
+    <div id="chat-toggle" onclick="toggleChat()">💬 Chat</div>
+    <div id="chat-popup" class="hidden">
+    <div id="chat-box"></div>
+    <div id="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Ask me anything about nutrition...">
+    <button id="send-btn">Send</button>
+    <button id="reset-btn">Reset</button>
+    </div>
+    </div>
+    </div>
     <script src="{% static 'meals/js/main.js' %}"></script>
     <!-- Include Chatbox JavaScript -->
 <script src="{% static 'meals/js/chatbot.js' %}"></script>

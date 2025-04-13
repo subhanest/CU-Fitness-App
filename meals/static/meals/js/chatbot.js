@@ -75,4 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
- 
+ // Toggle Chat Popup
+window.toggleChat = function () {
+  const popup = document.getElementById("chat-popup");
+  popup.classList.toggle("hidden");
+};

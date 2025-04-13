@@ -15,11 +15,19 @@
                 const newEntry = document.createElement("div");
                 newEntry.classList.add("meal-entry");
                 newEntry.innerHTML = `
-                    <input type="text" name="food_name[]" placeholder="Food Name" required>
-                    <input type="number" name="quantity[]" placeholder="Quantity" required>
-                    <input type="time" name="time[]" required>
-                    <button type="button" class="remove-entry" onclick="removeEntry(this)">X</button>
-                `;
+                        <input type="text" name="food_name[]" placeholder="Food Name" required>
+                        <input type="number" name="quantity[]" placeholder="Quantity" required>
+                        <input type="time" name="time[]" required>
+                        <select name="meal_type[]" required>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                        <input type="number" name="calories[]" placeholder="Calories (optional)" min="0">
+                        <button type="button" class="remove-entry" onclick="removeEntry(this)">X</button>
+                        `;
+
                 mealEntries.appendChild(newEntry);
             });
             
@@ -29,20 +37,21 @@
            // for chart
                 document.addEventListener('DOMContentLoaded', function() {
                     // Mock Data for Weight Progress
-                    const weightGoal = 70; // Target weight
-                    const currentWeight = 65; // Current weight
-                    const weightProgressBar = document.querySelector('.progress-bar-weight span');
+                    const weightGoal = parseFloat(document.getElementById("target-weight")?.textContent || 0);
+                    const currentWeight = parseFloat(document.getElementById("current-weight")?.textContent || 0);
+                    const weightBar = document.querySelector(".progress-bar-weight span");
                     
-                    // Calculate absolute difference and percentage from the target weight
-                    const weightDifference = Math.abs(currentWeight - weightGoal);
-                    const weightPercentage = (weightDifference / weightGoal) * 100; // Calculate percentage
+                    if (!isNaN(currentWeight) && !isNaN(weightGoal) && weightBar) {
+                      const startingWeight = Math.max(currentWeight, weightGoal);  // assume starting from higher weight
+                      const totalDistance = Math.abs(startingWeight - weightGoal);
+                      const progress = Math.abs(currentWeight - weightGoal);
+                      const percent = 100 - ((progress / totalDistance) * 100);
                     
-                    // Set the progress bar width based on the percentage
-                    weightProgressBar.style.width = `${weightPercentage}%`;
-                    
+                      weightBar.style.width = Math.min(percent, 100) + "%";
+                    }
                     // Mock Data for Daily Calorie Intake Progress
-                    const dailyGoal = 2500; // Daily Calorie Goal
-                    const currentCalories = 1800; // Calories consumed so far today
+                    const currentCalories = parseInt(document.getElementById("current-calories").textContent);
+                    const dailyGoal = parseInt(document.getElementById("target-calories").textContent);
                     const calorieProgressBar = document.querySelector('.progress-bar-calories span');
                     const caloriePercentage = (currentCalories / dailyGoal) * 100; // Calculate the percentage
                     calorieProgressBar.style.width = `${caloriePercentage}%`; // Set the width of the calorie progress bar
@@ -83,3 +92,18 @@
                          }
                         });
                 });
+document.getElementById("meal-log-form").addEventListener("submit", function (e) {
+        const entries = document.querySelectorAll(".meal-entry");
+        entries.forEach(entry => {
+        const foodName = entry.querySelector('input[name="food_name[]"]').value.trim();
+        const caloriesInput = entry.querySelector('input[name="calories[]"]');
+        if (!caloriesInput.value) {
+         // Simulate Spoonacular failure (e.g., food name too short or generic)
+        if (foodName.length < 3) {
+        caloriesInput.required = true;
+        caloriesInput.placeholder = "Calories required";
+                }
+                }
+        });
+    });
+                  

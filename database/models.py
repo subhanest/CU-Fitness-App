@@ -2,7 +2,7 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models
 from django.utils import timezone
-
+from django.conf import settings
 
 class CustomUserManager(BaseUserManager):
     """Custom user manager to handle email-based authentication instead of username."""
@@ -79,11 +79,54 @@ class UserQuestionnaire(models.Model):
     """Model to store user responses to the fitness questionnaire."""
     
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='questionnaire')
-    fitness_goals = models.CharField(max_length=255, default="General health")  # Required with default
+    
+    fitness_goals = models.CharField(
+    max_length=50,
+    choices=[
+        ('lose', 'Lose Weight'),
+        ('maintain', 'Maintain Weight'),
+        ('gain', 'Gain Weight')
+    ],
+    default='maintain'
+        )
     body_type = models.CharField(max_length=255, default="Average")  # Required with default
-    daily_caloric_need = models.IntegerField(default=2000)  # Required with default
+    
     workout_frequency = models.CharField(max_length=255, default="3 days/week, Moderate")  # Required with default
-    macronutrient_ratio = models.CharField(max_length=255, default="Balanced")  # Required with default
+   
+    macronutrient_ratio = models.CharField(
+    max_length=50,
+    choices=[
+        ('balanced', 'Balanced'),
+        ('high_protein', 'High Protein'),
+        ('low_carb', 'Low Carb'),
+        ('low_fat', 'Low Fat')
+    ],
+    default='balanced'
+            ) 
+    activity_level = models.CharField(
+    max_length=50,
+    choices=[
+        ('sedentary', 'Sedentary'),
+        ('light', 'Lightly active'),
+        ('moderate', 'Moderately active'),
+        ('active', 'Active'),
+        ('very_active', 'Very active')
+    ],
+    default='moderate'
+         )
+
+    cooking_time = models.IntegerField(null=True, blank=True)
+
+    diet = models.CharField(max_length=50, default="omnivore")
+    
+    intolerances = models.TextField(blank=True, default="")  # Comma-separated values
+
+    daily_budget = models.FloatField(null=True, blank=True)
+
+    target_calories = models.IntegerField(null=True, blank=True)
+    height = models.FloatField(default=170.0, help_text="Height in cm")  # or any reasonable default
+    current_weight = models.FloatField(null=True, blank=True)
+    target_weight = models.FloatField(null=True, blank=True)
     dietary_restrictions = models.CharField(max_length=255, default="None")  # Required with default
     sleep_hours = models.IntegerField(default=7)  # Required with default
     work_schedule = models.CharField(max_length=255, default="9-5 Job")  # Required with default
@@ -94,3 +137,20 @@ class UserQuestionnaire(models.Model):
     
     def __str__(self):
         return f"Questionnaire for {self.user.username}"
+    
+class MealLog(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    food_name = models.CharField(max_length=255)
+    quantity = models.PositiveIntegerField(default=1)
+    meal_type = models.CharField(max_length=50, choices=[
+        ('breakfast', 'Breakfast'),
+        ('lunch', 'Lunch'),
+        ('dinner', 'Dinner'),
+        ('snack', 'Snack')
+    ])
+    time = models.TimeField()
+    date = models.DateField(default=timezone.now)
+    calories = models.FloatField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.food_name} ({self.date})"

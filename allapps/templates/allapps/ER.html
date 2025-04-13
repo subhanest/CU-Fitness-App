@@ -7,12 +7,20 @@
         <title>Explore and Resources</title>
     
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
     </head>
 
     <body>
         
+
+        <div class="search-container">
+            <input type="text" id="search-query" placeholder="Search for workout (e.g., Running, Cycling)">
+            <button type="button" onclick="searchSection()">Search</button>
+        </div>
         
               
+
+        
 
         <header>
             <h1>Explore & Resources</h1>
@@ -38,26 +46,31 @@
                 <ul>
                     <li>Cardio Workouts(Improve heart health & endurance)</li>
                     <ol>
-                        <li> <a href="https://youtu.be/ZlhCyrTTT4U?si=Ea9HdZVJ34AlhWrQ" target="_blank" style="text-decoration: none; color: inherit;">
-                            Running or Jogging – Great for cardiovascular fitness and leg strength.
-                             </a>
+                    
+
+                        <li id="running"> <a href="https://youtu.be/ZlhCyrTTT4U?si=Ea9HdZVJ34AlhWrQ" target="_blank" style="text-decoration: none; color: inherit;">
+                                Running or Jogging – Great for cardiovascular fitness and leg strength.
+                                 </a>
                         </li>
-                        <li> <a href="https://youtu.be/4Hl1WAGKjMc?si=0zpOmesh9rdCRfsG" target="_blank" style="text-decoration: none; color: inherit;">
+                    
+                    
+                
+                        <li id="cycling"> <a href="https://youtu.be/4Hl1WAGKjMc?si=0zpOmesh9rdCRfsG" target="_blank" style="text-decoration: none; color: inherit;">
                             Cycling – Strengthens legs and improves endurance.
                              </a>
                             
                         </li>
-                        <li><a href="https://youtu.be/DTdaiqR9now?si=PdqS877Zsjkm4RTm" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="jump"><a href="https://youtu.be/DTdaiqR9now?si=PdqS877Zsjkm4RTm" target="_blank" style="text-decoration: none; color: inherit;">
                             Jump Rope – Excellent for full-body coordination and cardio.
                             </a>
                         </li>
                             
-                        <li><a href="https://youtu.be/9D6DluTzcNA?si=nQOvkBIMLoFTUJX7" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="swimming"><a href="https://youtu.be/9D6DluTzcNA?si=nQOvkBIMLoFTUJX7" target="_blank" style="text-decoration: none; color: inherit;">
                             Swimming – Low-impact, full-body workout that builds endurance.
                         </a>
                         
                         </li>
-                        <li><a href="https://youtu.be/fxx2Uc0AjFk?si=_W66v_kj8u3gpdjS" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="high-intensity"><a href="https://youtu.be/fxx2Uc0AjFk?si=_W66v_kj8u3gpdjS" target="_blank" style="text-decoration: none; color: inherit;">
 
                             <p>High-Intensity Interval Training (HIIT) – Short bursts of intense exercise followed by rest.</p>
                         </a>
@@ -66,19 +79,19 @@
                     </ol>
                     <li>Strength Training (Muscle Growth & Toning)</li>
                     <ol>
-                        <li><a href="https://youtu.be/30PqX2zvK88?si=lxU8jJTJxpo_XE34" target="_blank" style="text-decoration: none;color: inherit;">
+                        <li id="pushup"><a href="https://youtu.be/30PqX2zvK88?si=lxU8jJTJxpo_XE34" target="_blank" style="text-decoration: none;color: inherit;">
                             Bodyweight Exercises: Push-ups, Squats, Lunges, Planks
                         </a>
                         </li>
-                        <li><a href="https://youtu.be/0A3EgOztptQ?si=J9kAnH1Dk0eDuFNr" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="weights"><a href="https://youtu.be/0A3EgOztptQ?si=J9kAnH1Dk0eDuFNr" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Free Weights: Dumbbells, Barbells, Kettlebells.</p>
                         </a>
                         </li>
-                        <li><a href="https://youtu.be/hQ2lHMP4kco?si=--xFA1yvyFlRohML" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="squats"><a href="https://youtu.be/hQ2lHMP4kco?si=--xFA1yvyFlRohML" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Resistance Bands: Shoulder Press, Banded Squats</p>
                         </a>
                         </li>
-                        <li><a href="https://youtu.be/uEsZWWiYNAQ?si=fhU_FGO8Mew7X_U7" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="machines"><a href="https://youtu.be/uEsZWWiYNAQ?si=fhU_FGO8Mew7X_U7" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Machines: Leg Press, Lat Pulldown.</p>
                         </a>
                         </li>
@@ -86,23 +99,23 @@
                     </ol>
                     <li>Flexibility & Mobility (Injury Prevention & Recovery)</li>
                     <ol>
-                        <li><a href="https://youtu.be/chZsNmTUC2s?si=GwGxK5DKYl5QO_Lg" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="stretch"><a href="https://youtu.be/chZsNmTUC2s?si=GwGxK5DKYl5QO_Lg" target="_blank" style="text-decoration: none; color: inherit;">
 
                             Static Stretching (Hamstring Stretch, Quad Stretch)
                         </a>
                     </li>
-                        <li><a href="https://youtu.be/DgjiFOKWsfg?si=o14VPolBCC6Xvul9" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="dynamic stretch"><a href="https://youtu.be/DgjiFOKWsfg?si=o14VPolBCC6Xvul9" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Dynamic Stretching (Leg Swings, Arm Circles)</p>
                         </a>
                     </li>
-                        <li>
+                        <li id="yoga">
                             <a href="https://youtu.be/lVJS0mGr0jQ?si=9XvSvkkWjPS9fzXd" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Yoga (Sun Salutations, Warrior Pose)</p>
                         </a></li>
-                        <li><a href="https://youtu.be/R0eqxnSyRkM?si=T-hSYi5E1OkJuB6S" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="Pilates"><a href="https://youtu.be/R0eqxnSyRkM?si=T-hSYi5E1OkJuB6S" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Pilates (Core & Mobility Workouts)</p>
                         </a></li>
-                        <li><a href="https://youtu.be/NS73eSohTbc?si=P4dYaAvqSI3h56IZ" target="_blank" style="text-decoration: none; color: inherit;">
+                        <li id="foam rolling"><a href="https://youtu.be/NS73eSohTbc?si=P4dYaAvqSI3h56IZ" target="_blank" style="text-decoration: none; color: inherit;">
                             <p>Foam Rolling (Self-Myofascial Release)</p>
                         </a></li>
                     </ol>
@@ -248,7 +261,7 @@
                             <li> Fats (Hormonal Balance & Satiety) – Avocados, nuts, olive oil, seeds.</li>
                             <li> Hydration – Drink plenty of water and consider electrolyte-rich drinks for intense workouts.</li>
                         </ul>
-                        <li>Learn From Experts</li>
+                        <li id="meal prep">Learn From Experts</li>
                         <ul>
                             <li>
                                 <a href="https://youtu.be/6An7iH4BwJo?si=fXVVaMxd6k2T2bp_" target="_blank" style="text-decoration: none; color: inherit;">
@@ -399,6 +412,41 @@
                 </p>
             </section>
         </main>
+        <!-- JavaScript for Smooth Scroll -->
+    <script>
+        function searchSection() {
+            // Get the search query from the input box
+            var searchTerm = document.getElementById("search-query").value.toLowerCase().trim();
+    
+            // Find the element with the corresponding ID (e.g., "running", "cycling")
+            var targetElement = document.getElementById(searchTerm);
+    
+            // Check if the element exists
+            if (targetElement) {
+                // Scroll to the element smoothly
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            } else {
+                alert("No matching section found!"); // Alert if no match is found
+            }
+        }
+        </script><!-- JavaScript for Smooth Scroll -->
+    <script>
+    function searchSection() {
+        // Get the search query from the input box
+        var searchTerm = document.getElementById("search-query").value.toLowerCase().trim();
+
+        // Find the element with the corresponding ID (e.g., "running", "cycling")
+        var targetElement = document.getElementById(searchTerm);
+
+        // Check if the element exists
+        if (targetElement) {
+            // Scroll to the element smoothly
+            targetElement.scrollIntoView({ behavior: "smooth" });
+        } else {
+            alert("No matching section found!"); // Alert if no match is found
+        }
+    }
+    </script>
         <footer>
             <p>&copy; 2025 CUFitness. All rights reserved.</p>
         </footer>
